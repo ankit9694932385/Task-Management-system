@@ -1,0 +1,109 @@
+<%- include("../includes/markup.ejs") %>
+
+<div class="main-container">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="profile">
+      <i class="fa-solid fa-user"></i>
+      &nbsp; &nbsp; &nbsp;
+      <div class="name">Ankit Kumawat</div>
+    </div>
+    <!-- list -->
+    <div class="lists">
+      <div class="list-1">
+        <a href=""><i class="fa-solid fa-display"></i><span>DASHBOARD</span></a>
+        <a href="">
+          <i style="color: green" class="fa-solid fa-calendar-days"></i
+          ><span>TODAY TASKS</span>
+        </a>
+        <a href=""
+          ><i style="color: blue" class="fa-regular fa-star"></i
+          ><span>IMPORTANT</span></a
+        >
+        <a href=""
+          ><i style="color: blue" class="fa-solid fa-house"></i
+          ><span>HOME</span></a
+        >
+        <a href=""
+          ><i style="color: blue" class="fa-solid fa-calculator"></i
+          ><span>OFFICE</span></a
+        >
+      </div>
+      <hr />
+      <br />
+      <div class="list-2">
+        <a href="">
+          <i style="color: green" class="fa-solid fa-cart-shopping"></i
+          ><span>SHOPPING</span></a
+        >
+        <a href=""
+          ><i style="color: violet" class="fa-solid fa-microphone"></i
+          ><span>TASKMATE</span></a
+        >
+        <a href="">
+          <i style="color: red" class="fa-solid fa-lock"></i
+          ><span>MY PROJECTS</span>
+        </a>
+      </div>
+    </div>
+    <div class="side-bottom">
+      <a id="list-btn" href="">+ NEW LIST</a>
+    </div>
+  </div>
+  <!-- CONTENT-PART -->
+  <div class="content">
+    <!-- top-content -->
+    <div class="top-content">
+      <div class="start-part">
+        <h1>TODAY TASKS</h1>
+        <h2 class="head-2">Tuesday , January 26</h2>
+      </div>
+      <div class="end-part">
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </div>
+    </div>
+    <!-- middle-content -->
+    <div class="middle-content">
+      <% for( data of tasks) {%>
+      <div class="all-task">
+        <div class="all-task-1">
+          <div><input type="radio" /></div>
+          &nbsp; &nbsp;
+          <div class="task"><%= data.task.toUpperCase() %></div>
+        </div>
+        <div class="all-task-2">
+          <form action="/task/<%= data.id %>/edit?" method="get">
+            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+          </form>
+          <form action="/task/<%= data.id %>?_method=DELETE" method="post">
+            <button class="delete-btn">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </form>
+          <a class="task-detail" href="/task/<%= data.id %>/detail"
+            ><i class="fa-solid fa-arrow-up-right-from-square"></i
+          ></a>
+        </div>
+      </div>
+      <% } %>
+      <form action="/task/new">
+        <button style="color: rgb(14, 128, 177); font-size: 20px">
+          +&nbsp;Add new Task
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  let h2 = document.querySelector(".head-2");
+
+  const today = new Date();
+  const options = {
+    month: "long", // Use 'long' for full month name (e.g., "January")
+    day: "numeric",
+    year: "numeric",
+  };
+  const formattedDate = today.toLocaleDateString("en-US", options);
+  h2.innerHTML = `${formattedDate}`;
+</script>
