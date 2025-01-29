@@ -61,6 +61,8 @@ let tasks = [
   },
 ];
 
+// Task Route
+
 app.get("/", (req, res) => {
   res.render("task/home.ejs");
 });
@@ -110,3 +112,28 @@ app.get("/task/:id/detail", (req, res) => {
   console.log(data);
   res.render("task/taskdetail.ejs", { data });
 });
+
+// Category Route
+
+// home Route
+
+app.get("/task/category", (req, res) => {
+  let { category: linkCategory } = req.query;
+  try {
+    console.log(linkCategory);
+  } catch (e) {
+    console.log("not found");
+  }
+  let homeTask = tasks.filter((task) => task.category === `${linkCategory}`);
+
+  if (homeTask.length > 0) {
+    res.render("category/allCategory.ejs", {
+      homeTask,
+      linkCategory,
+    });
+  } else {
+    res.send("<h1>NO DATA FOUND</h1>");
+  }
+});
+
+// office route

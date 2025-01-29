@@ -1,0 +1,75 @@
+<%- include("../includes/markup.ejs") %>
+
+<div class="imp-container">
+  <div class="logo-container" style="overflow: hidden">
+    <div class="category">
+      <h1><%= linkCategory.toUpperCase() %> TASKS</h1>
+    </div>
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+        <g fill-rule="evenodd">
+          <path
+            d="M77.941 44.5v36.836L46.324 62.918V26.082zm0 0"
+            fill="#5c4ee5"
+          />
+          <path
+            d="M81.41 81.336l31.633-18.418V26.082L81.41 44.5zm0 0"
+            fill="#4040b2"
+          />
+          <path
+            d="M11.242 42.36L42.86 60.776V23.941L11.242 5.523zm0 0M77.941 85.375L46.324 66.957v36.82l31.617 18.418zm0 0"
+            fill="#5c4ee5"
+          />
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="data-container">
+    <% if (homeTask.length > 0) { %> <% homeTask.forEach(data => { %>
+
+    <div class="info-card">
+      <div class="card-heading">
+        <h2 class="data-label" style="font-size: 1.4rem; color: #1e40af">
+          <%= data.task %>
+        </h2>
+      </div>
+      <div class="detail-section">
+        <div class="data-label"><i class="fas fa-mobile-alt"></i> Phone</div>
+        <div class="data-content"><%= data.description %></div>
+      </div>
+
+      <div class="detail-section">
+        <div class="data-label"><i class="fas fa-envelope"></i> Start Date</div>
+        <div class="data-content"><%= data.startDate %></div>
+      </div>
+
+      <div class="detail-section">
+        <div class="data-label">
+          <i class="fas fa-map-marker-alt"></i> Location
+        </div>
+        <div class="data-content"><%= data.startDate %></div>
+      </div>
+
+      <div class="detail-section">
+        <div class="data-label"><i class="fas fa-user-tag"></i> Role</div>
+        <div class="data-content"><%= data.status %></div>
+      </div>
+
+      <div class="action-bar">
+        <a href="/task/<%=data.id %>/edit" class="card-action edit-action">
+          <i class="fas fa-edit"></i>
+        </a>
+        <a href="#" class="card-action delete-action">
+          <i class="fas fa-trash"></i>
+        </a>
+        <a href="#" class="card-action view-action">
+          <i class="fas fa-info-circle"></i>
+        </a>
+      </div>
+    </div>
+
+    <% }) %> <% } else { %>
+    <p>No tasks found in this category</p>
+    <% } %>
+  </div>
+</div>
