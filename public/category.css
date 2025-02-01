@@ -38,7 +38,7 @@ body {
   padding: 50px;
   h1 {
     font-weight: 900;
-    color: #1e40af;
+    color: #000000;
     letter-spacing: 3px;
     font-family: cursive;
     text-align: center;
@@ -50,6 +50,17 @@ body {
     margin-top: 20px;
     width: 200px;
     height: 200px;
+  }
+
+  h2 {
+    font-weight: 900;
+    color: #000000;
+    letter-spacing: 3px;
+    font-family: cursive;
+    position: fixed;
+    bottom: 20px;
+    font-weight: 300;
+    margin-left: 7.8rem;
   }
 }
 

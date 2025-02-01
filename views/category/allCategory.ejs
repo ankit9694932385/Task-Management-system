@@ -23,6 +23,7 @@
         </g>
       </svg>
     </div>
+    <h2>No. of Tasks =<%= homeTask.length %></h2>
   </div>
   <div class="data-container">
     <% if (homeTask.length > 0) { %> <% homeTask.forEach(data => { %>
@@ -34,25 +35,18 @@
         </h2>
       </div>
       <div class="detail-section">
-        <div class="data-label"><i class="fas fa-mobile-alt"></i> Phone</div>
+        <div class="data-label"><i class="fas fa-mobile-alt"></i> TASK</div>
         <div class="data-content"><%= data.description %></div>
       </div>
 
       <div class="detail-section">
-        <div class="data-label"><i class="fas fa-envelope"></i> Start Date</div>
-        <div class="data-content"><%= data.startDate %></div>
+        <div class="data-label"><i class="fas fa-envelope"></i> DATE</div>
+        <div class="data-content"><% new Date(data.date) %></div>
       </div>
 
       <div class="detail-section">
-        <div class="data-label">
-          <i class="fas fa-map-marker-alt"></i> Location
-        </div>
-        <div class="data-content"><%= data.startDate %></div>
-      </div>
-
-      <div class="detail-section">
-        <div class="data-label"><i class="fas fa-user-tag"></i> Role</div>
-        <div class="data-content"><%= data.status %></div>
+        <div class="data-label"><i class="fas fa-user-tag"></i>CATEGORY</div>
+        <div class="data-content"><%= data.category %></div>
       </div>
 
       <div class="action-bar">
