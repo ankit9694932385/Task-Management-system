@@ -27,7 +27,7 @@ async function main() {
 const taskSchema = new mongoose.Schema({
   task: String,
   createdAt: {
-    type: Number,
+    type: Date,
     default: Date.now(),
   },
   category: String,
@@ -56,8 +56,8 @@ app.get("/task/new", (req, res) => {
 
 app.post("/task", async (req, res) => {
   let tasks = await Task.find({});
-  let { task, date, description, category } = req.body;
-  let newTask = new Task({ task, date, category, description });
+  let { task, description, category } = req.body;
+  let newTask = new Task({ task, category, description });
   let newSavedTask = await newTask.save();
   console.log(newSavedTask);
   res.redirect("/task");
@@ -67,7 +67,6 @@ app.get("/task/:id/edit", async (req, res) => {
   let tasks = await Task.find({});
   let { id } = req.params;
   let data = tasks.find((p) => id === p.id);
-  console.log(data);
   res.render("task/edittask.ejs", { data });
 });
 
@@ -99,8 +98,6 @@ app.get("/task/:id/detail", async (req, res) => {
 
 // Category Route
 
-// home Route
-
 app.get("/task/category", async (req, res) => {
   let tasks = await Task.find({});
   let { category: linkCategory } = req.query;
@@ -109,12 +106,12 @@ app.get("/task/category", async (req, res) => {
   } catch (e) {
     console.log("not found");
   }
-  let homeTask = tasks.filter((task) => task.category === `${linkCategory}`);
-  console.log(homeTask.description);
+  let allTask = tasks.filter((task) => task.category === `${linkCategory}`);
+  console.log(allTask);
 
-  if (homeTask.length > 0) {
+  if (allTask.length > 0) {
     res.render("category/allCategory.ejs", {
-      homeTask,
+      allTask,
       linkCategory,
     });
   } else {

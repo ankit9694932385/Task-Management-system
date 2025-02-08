@@ -290,6 +290,7 @@ form .form-row .textarea {
   height: 70px;
   margin-top: 10px;
 }
+
 .input-data input,
 .textarea textarea,
 select {
@@ -320,6 +321,7 @@ textarea:focus {
 .textarea textarea {
   resize: none;
   padding-top: 10px;
+  text-align: start;
 }
 .input-data label {
   position: absolute;
@@ -396,20 +398,8 @@ select:focus {
   filter: drop-shadow(5px 5px 5px solid red);
 }
 
-@media (max-width: 700px) {
-  .container .text {
-    font-size: 30px;
-  }
-  .container form {
-    padding: 10px 0 0 0;
-  }
-  .container form .form-row {
-    display: block;
-  }
-  form .form-row .input-data {
-    margin: 35px 0 !important;
-  }
-  .submit-btn .input-data {
-    width: 40% !important;
-  }
+.disabled-date label {
+  transform: translateY(-20px);
+  font-size: 14px;
+  color: #3498db;
 }

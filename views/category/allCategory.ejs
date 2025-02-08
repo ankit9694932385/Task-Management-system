@@ -2,6 +2,7 @@
 
 <div class="imp-container">
   <div class="logo-container" style="overflow: hidden">
+    <!-- Category Name -->
     <div class="category">
       <h1><%= linkCategory.toUpperCase() %> TASKS</h1>
     </div>
@@ -23,25 +24,41 @@
         </g>
       </svg>
     </div>
-    <h2>No. of Tasks =<%= homeTask.length %></h2>
+    <h2>No. of Tasks =<%= allTask.length %></h2>
   </div>
+  <!-- Category task detail -->
   <div class="data-container">
-    <% if (homeTask.length > 0) { %> <% homeTask.forEach(data => { %>
+    <% if (allTask.length > 0) { %> <% allTask.forEach(data => { %>
 
     <div class="info-card">
       <div class="card-heading">
-        <h2 class="data-label" style="font-size: 1.4rem; color: #1e40af">
+        <h2
+          class="data-label"
+          style="
+            font-size: 1.8rem;
+            color: #1e40af;
+            text-transform: uppercase;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+              'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+          "
+        >
           <%= data.task %>
         </h2>
       </div>
       <div class="detail-section">
-        <div class="data-label"><i class="fas fa-mobile-alt"></i> TASK</div>
-        <div class="data-content"><%= data.description %></div>
+        <div class="data-label">
+          <i class="fas fa-mobile-alt"></i> DESCRIPTION
+        </div>
+        <div class="data-content" style="text-transform: capitalize">
+          <%= data.description %>
+        </div>
       </div>
 
       <div class="detail-section">
         <div class="data-label"><i class="fas fa-envelope"></i> DATE</div>
-        <div class="data-content"><% new Date(data.date) %></div>
+        <div class="data-content">
+          <%= data.createdAt.toLocaleDateString("en-IN") %>
+        </div>
       </div>
 
       <div class="detail-section">
@@ -53,12 +70,20 @@
         <a href="/task/<%=data.id %>/edit" class="card-action edit-action">
           <i class="fas fa-edit"></i>
         </a>
-        <a href="#" class="card-action delete-action">
-          <i class="fas fa-trash"></i>
-        </a>
-        <a href="#" class="card-action view-action">
-          <i class="fas fa-info-circle"></i>
-        </a>
+
+        <form method="post" action="/task/<%=data.id %>?_method=DELETE">
+          <button
+            style="
+              border: none;
+              background-color: transparent;
+              display: inline-block;
+            "
+          >
+            <a class="card-action delete-action">
+              <i class="fas fa-trash"></i>
+            </a>
+          </button>
+        </form>
       </div>
     </div>
 

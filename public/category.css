@@ -114,11 +114,12 @@ body {
 }
 
 .action-bar {
-  margin-top: 1.25rem;
-  text-align: center;
-  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   bottom: 0;
-  margin: 0 0 20px 150px;
+  margin-top: 2rem;
 }
 
 .card-action {

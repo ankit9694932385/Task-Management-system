@@ -2,50 +2,50 @@
 
 <body class="body-2">
   <div class="container">
-    <div class="text edit-task-heading">
-        Edit your task
-    </div>
+    <div class="text edit-task-heading">Edit your task</div>
     <form method="post" action="/task/<%= data.id %>?_method=PATCH">
-       <div class="form-row">
-          <div class="input-data">
-             <input type="text" name="newTask[task]" value="<%= data.task || ""
-      %>"  required>
-             <div class="underline"></div>
-             <label for=""> TASK</label>
-          </div>
-          <div class="input-data">
-            <select required name="newTask[category]">
-              <option value="<%= data.category %>"><%= data.category %></option>
-              <option value="Home">Home</option>
-              <option value="Office">Office</option>
-              <option value="Personal">Personal</option>
-              <option value="Study">Study</option>
-              <option value="Entertainment">Entertainment</option>
-            </select>
-            <div class="underline"></div>
-            <label for="">CATEGORY</label>
-          </div>
-       </div>
-       <div class="form-row">
-          <div class="input-data">
-             <input type="date" name="newTask[date]" value="<%= data.endDate  
-      %>" required>
-             <div class="underline"></div>
-             <label for="">Date</label>
-          </div>
-       </div>
-       <div class="form-row">
-       <div class="input-data textarea">
-          <textarea rows="8" cols="80" name="newTask[description]" required><%= data.description
-      %></textarea>
-          <br />
+      <div class="form-row">
+        <div class="input-data">
+          <input type="text" name="newTask[task]" value="<%= data.task || "" %>"
+          required>
+          <div class="underline"></div>
+          <label for=""> TASK</label>
+        </div>
+        <div class="input-data">
+          <select required name="newTask[category]">
+            <option value="<%= data.category %>"><%= data.category %></option>
+            <option value="Home">Home</option>
+            <option value="Office">Office</option>
+            <option value="Personal">Personal</option>
+            <option value="Study">Study</option>
+            <option value="Entertainment">Entertainment</option>
+          </select>
+          <div class="underline"></div>
+          <label for="">CATEGORY</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data disabled-date">
+          <input type="text" name="newTask[date]" value="<%=
+          data.createdAt.toLocaleDateString("en-IN") %>" required readOnly>
+          <div class="underline"></div>
+          <label for="">Date</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data textarea">
+          <textarea rows="3" cols="60" name="newTask[description]" required>
+<%= data.description.trim()
+      %></textarea
+          >
           <div class="underline"></div>
           <label for="">Task Description</label>
           <br />
-         <div class="submit-btn-row"> 
-            <button class="submit-btn edit-task-btn ">SUBMIT</button>
+          <div class="submit-btn-row">
+            <button class="submit-btn edit-task-btn">SUBMIT</button>
+          </div>
         </div>
+      </div>
     </form>
-    </div>
-  
+  </div>
 </body>

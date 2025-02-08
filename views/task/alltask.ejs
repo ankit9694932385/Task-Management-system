@@ -73,7 +73,7 @@
         <div class="all-task-1">
           <div><input type="radio" /></div>
           &nbsp; &nbsp;
-          <div class="task"><%= data.task %></div>
+          <div class="task"><%= data.task.toUpperCase() %></div>
         </div>
         <div class="all-task-2">
           <form action="/task/<%= data.id %>/edit?" method="get">
