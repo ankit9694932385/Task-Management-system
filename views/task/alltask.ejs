@@ -11,8 +11,8 @@
     <!-- list -->
     <div class="lists">
       <div class="list-1">
-        <a href=""><i class="fa-solid fa-display"></i><span>DASHBOARD</span></a>
-        <a href="">
+        <a href="/"><i class="fa-solid fa-display"></i><span>HOME</span></a>
+        <a href="/task/today">
           <i style="color: green" class="fa-solid fa-calendar-days"></i
           ><span>TODAY TASKS</span>
         </a>
@@ -21,37 +21,21 @@
           ><span>IMPORTANT</span></a
         >
         <a href="/task/category/?category=Home"
-          ><i style="color: blue" class="fa-solid fa-house"></i
-          ><span>HOME</span></a
+          ><i class="fa-solid fa-house"></i><span>HOME</span></a
         >
         <a href="/task/category/?category=Office"
-          ><i style="color: blue" class="fa-solid fa-calculator"></i
-          ><span>OFFICE</span></a
+          ><i class="fa-solid fa-calculator"></i><span>OFFICE</span></a
         >
         <a href="/task/category/?category=Personal"
-          ><i style="color: blue" class="fa-solid fa-house"></i
-          ><span>PERSONAL</span></a
+          ><i class="fa-solid fa-child"></i><span>PERSONAL</span></a
+        >
+        <a href="/task/category/?category=Study"
+          ><i class="fa-solid fa-book"></i><span>STUDY</span></a
         >
       </div>
       <hr />
       <br />
-      <div class="list-2">
-        <a href="">
-          <i style="color: green" class="fa-solid fa-cart-shopping"></i
-          ><span>SHOPPING</span></a
-        >
-        <a href=""
-          ><i style="color: violet" class="fa-solid fa-microphone"></i
-          ><span>TASKMATE</span></a
-        >
-        <a href="">
-          <i style="color: red" class="fa-solid fa-lock"></i
-          ><span>MY PROJECTS</span>
-        </a>
-      </div>
-    </div>
-    <div class="side-bottom">
-      <a id="list-btn" href="">+ NEW LIST</a>
+      <div class="list-2"></div>
     </div>
   </div>
   <!-- CONTENT-PART -->
@@ -61,9 +45,6 @@
       <div class="start-part">
         <h1>TODAY TASKS</h1>
         <h2 class="head-2">Tuesday , January 26</h2>
-      </div>
-      <div class="end-part">
-        <i class="fa-solid fa-ellipsis-vertical"></i>
       </div>
     </div>
     <!-- middle-content -->
@@ -90,11 +71,18 @@
         </div>
       </div>
       <% } %>
-      <form action="/task/new">
-        <button style="color: rgb(14, 128, 177); font-size: 20px">
-          +&nbsp;Add Task
-        </button>
-      </form>
+      <br />
+      <a
+        href="/task/new"
+        style="
+          text-decoration: none;
+          color: rgb(66, 48, 206);
+          font-size: 15px;
+          font-weight: 500;
+          margin-left: 10px;
+        "
+        >+ &nbsp;ADD TASK</a
+      >
     </div>
   </div>
 </div>

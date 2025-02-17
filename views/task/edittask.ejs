@@ -18,7 +18,6 @@
             <option value="Office">Office</option>
             <option value="Personal">Personal</option>
             <option value="Study">Study</option>
-            <option value="Entertainment">Entertainment</option>
           </select>
           <div class="underline"></div>
           <label for="">CATEGORY</label>
@@ -26,8 +25,14 @@
       </div>
       <div class="form-row">
         <div class="input-data disabled-date">
-          <input type="text" name="newTask[date]" value="<%=
-          data.createdAt.toLocaleDateString("en-IN") %>" required readOnly>
+          <input
+            type="text"
+            name="newTask[date]"
+            value="<%=
+          data.createdAt.replace(/\//g, '-'); %>"
+            required
+            readOnly
+          />
           <div class="underline"></div>
           <label for="">Date</label>
         </div>

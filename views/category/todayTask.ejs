@@ -1,0 +1,75 @@
+<%- include("../includes/markup.ejs") %>
+<button class="back-btn" onclick="window.history.back()">
+  <i class="fas fa-arrow-left"></i>
+</button>
+<br />
+<br />
+<br />
+<div class="data-container">
+  <p
+    id="today-tasks"
+    style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      font-size: 40px;
+      font-family: cursive;
+      text-align: center;
+      letter-spacing: 3px;
+      z-index: 2;
+      background-color: rgb(86, 209, 224);
+      transition: opacity 0.3s ease-in-out;
+      opacity: 1;
+    "
+  >
+    Today Tasks
+  </p>
+
+  <% if (tasks.length > 0) { %> <% tasks.forEach(data => { %>
+  <div class="info-card">
+    <div class="card-heading">
+      <h2 class="data-label" style="font-size: 20px"><%= data.task %></h2>
+    </div>
+    <div class="detail-section">
+      <div class="data-label">
+        <i class="fas fa-mobile-alt"></i> &nbsp; DESCRIPTION
+      </div>
+      <div class="data-content"><%= data.description %></div>
+    </div>
+    <div class="detail-section">
+      <div class="data-label"><i class="fas fa-envelope"></i>&nbsp; DATE</div>
+      <div class="data-content"><%= data.createdAt %></div>
+    </div>
+    <div class="detail-section">
+      <div class="data-label">
+        <i class="fas fa-user-tag"></i>&nbsp; CATEGORY
+      </div>
+      <div class="data-content"><%= data.category %></div>
+    </div>
+    <div class="action-bar">
+      <a href="/task/<%= data.id %>/edit" class="card-action edit-action">
+        <i class="fas fa-edit"></i>
+      </a>
+      <form
+        method="post"
+        action="/task/<%= data.id %>?_method=DELETE"
+        style="display: inline"
+      >
+        <button type="submit" class="card-action delete-action">
+          <i class="fas fa-trash"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  <% }) %> <% } else { %>
+  <p style="font-size: 30px; font-family: cursive">No tasks created today</p>
+  &nbsp;&nbsp;
+  <a
+    href="/task/new"
+    class="create-task-btn"
+    style="color: rgb(181, 198, 202); font-family: cursive"
+    >Create a New Task</a
+  >
+  <% } %>
+</div>

@@ -1,4 +1,7 @@
 <%- include("../includes/markup.ejs") %>
+<button class="back-btn" onclick="window.history.back()">
+  <i class="fas fa-arrow-left"></i>
+</button>
 
 <div class="imp-container">
   <div class="logo-container" style="overflow: hidden">
@@ -47,7 +50,7 @@
       </div>
       <div class="detail-section">
         <div class="data-label">
-          <i class="fas fa-mobile-alt"></i> DESCRIPTION
+          <i class="fas fa-mobile-alt"></i> &nbsp; DESCRIPTION
         </div>
         <div class="data-content" style="text-transform: capitalize">
           <%= data.description %>
@@ -55,14 +58,14 @@
       </div>
 
       <div class="detail-section">
-        <div class="data-label"><i class="fas fa-envelope"></i> DATE</div>
-        <div class="data-content">
-          <%= data.createdAt.toLocaleDateString("en-IN") %>
-        </div>
+        <div class="data-label"><i class="fas fa-envelope"></i>&nbsp; DATE</div>
+        <div class="data-content"><%= data.createdAt %></div>
       </div>
 
       <div class="detail-section">
-        <div class="data-label"><i class="fas fa-user-tag"></i>CATEGORY</div>
+        <div class="data-label">
+          <i class="fas fa-user-tag"></i>&nbsp; CATEGORY
+        </div>
         <div class="data-content"><%= data.category %></div>
       </div>
 
@@ -88,7 +91,7 @@
     </div>
 
     <% }) %> <% } else { %>
-    <p>No tasks found in this category</p>
+    <p class="n-task">No tasks found in this category 😥</p>
     <% } %>
   </div>
 </div>

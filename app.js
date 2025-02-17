@@ -27,8 +27,8 @@ async function main() {
 const taskSchema = new mongoose.Schema({
   task: String,
   createdAt: {
-    type: Date,
-    default: Date.now(),
+    type: String,
+    default: new Date().toISOString().split("T")[0],
   },
   category: String,
   description: {
@@ -43,6 +43,10 @@ const Task = mongoose.model("Task", taskSchema);
 
 app.get("/", (req, res) => {
   res.render("task/home.ejs");
+});
+
+app.get("/task/dashboard", (req, res) => {
+  res.send("dashboard page");
 });
 
 app.get("/task", async (req, res) => {
@@ -79,6 +83,7 @@ app.patch("/task/:id", async (req, res) => {
   for (let key in newData) {
     oldData[key] = newData[key];
   }
+  await oldData.save();
   res.redirect("/task");
 });
 
@@ -109,14 +114,14 @@ app.get("/task/category", async (req, res) => {
   let allTask = tasks.filter((task) => task.category === `${linkCategory}`);
   console.log(allTask);
 
-  if (allTask.length > 0) {
-    res.render("category/allCategory.ejs", {
-      allTask,
-      linkCategory,
-    });
-  } else {
-    res.send("<h1>NO DATA FOUND</h1>");
-  }
+  res.render("category/allCategory.ejs", { allTask, linkCategory });
+});
+
+app.get("/task/today", async (req, res) => {
+  let tasks = await Task.find({});
+  const today = new Date().toISOString().split("T")[0];
+  const todayTasks = tasks.filter((task) => task.createdAt.startsWith(today));
+  res.render("category/todayTask.ejs", { tasks: todayTasks });
 });
 
 app.listen(3000, () => {
