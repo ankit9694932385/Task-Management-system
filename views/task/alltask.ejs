@@ -1,101 +1,142 @@
-<%- include("../includes/markup.ejs") %>
-
-<div class="main-container">
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="profile">
-      <i class="fa-solid fa-user"></i>
-      &nbsp; &nbsp; &nbsp;
-      <div class="name">Ankit Kumawat</div>
+<%- include("../includes/boilerplate.ejs") %>
+<body>
+  <div class="main-container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="profile">
+        <i class="fa-solid fa-user"></i>
+        &nbsp; &nbsp; &nbsp;
+        <div class="name">Ankit Kumawat</div>
+      </div>
+      <!-- list -->
+      <div class="lists">
+        <div class="list-1">
+          <a href="/"><i class="fa-solid fa-display"></i><span>HOME</span></a>
+          <a href="/task/today">
+            <i style="color: green" class="fa-solid fa-calendar-days"></i>
+            <span>TODAY TASKS</span>
+          </a>
+          <a href="">
+            <i style="color: blue" class="fa-regular fa-star"></i>
+            <span>IMPORTANT</span>
+          </a>
+          <a href="/task/category/?category=Office">
+            <i class="fa-solid fa-calculator"></i>
+            <span>OFFICE</span>
+          </a>
+          <a href="/task/category/?category=Personal">
+            <i class="fa-solid fa-child"></i>
+            <span>PERSONAL</span>
+          </a>
+          <a href="/task/category/?category=Study">
+            <i class="fa-solid fa-book"></i>
+            <span>STUDY</span>
+          </a>
+        </div>
+        <hr />
+        <br />
+        <div class="list-2"></div>
+      </div>
     </div>
-    <!-- list -->
-    <div class="lists">
-      <div class="list-1">
-        <a href="/"><i class="fa-solid fa-display"></i><span>HOME</span></a>
-        <a href="/task/today">
-          <i style="color: green" class="fa-solid fa-calendar-days"></i
-          ><span>TODAY TASKS</span>
+
+    <!-- CONTENT-PART -->
+    <div class="content">
+      <!-- top-content -->
+      <div class="top-content">
+        <div class="start-part">
+          <h1>ALL TASKS</h1>
+          <h2 class="head-2">Tuesday , January 26</h2>
+        </div>
+      </div>
+
+      <!-- middle-content -->
+      <div class="middle-content">
+        <% for(let data of tasks) { %>
+        <div class="all-task">
+          <div class="all-task-1">
+            <div><input type="radio" /></div>
+            &nbsp; &nbsp;
+            <div style="font-family: cursive" class="task">
+              <%= data.task.toUpperCase() %>
+            </div>
+          </div>
+          <div class="all-task-2">
+            <form action="/task/<%= data.id %>/edit?" method="get">
+              <button class="edit-btn"><i class="fas fa-edit"></i></button>
+            </form>
+            <form action="/task/<%= data.id %>?_method=DELETE" method="post">
+              <button class="delete-btn">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </form>
+            <!-- Important Icon Button -->
+            <a
+              class="important-btn"
+              href="#"
+              onclick="markImportant(event, '<%= data.id %>')"
+            >
+              <i class="fa-regular fa-star" style="color: orange"></i>
+            </a>
+            <a class="task-detail" href="/task/<%= data.id %>/detail">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        <% } %>
+        <br />
+        <a
+          href="/task/new"
+          style="
+            text-decoration: none;
+            color: rgb(47, 31, 172);
+            font-size: 18px;
+            font-weight: 600;
+            margin-left: 10px;
+          "
+        >
+          <strong>+</strong> &nbsp;ADD TASK
         </a>
-        <a href=""
-          ><i style="color: blue" class="fa-regular fa-star"></i
-          ><span>IMPORTANT</span></a
-        >
-        <a href="/task/category/?category=Home"
-          ><i class="fa-solid fa-house"></i><span>HOME</span></a
-        >
-        <a href="/task/category/?category=Office"
-          ><i class="fa-solid fa-calculator"></i><span>OFFICE</span></a
-        >
-        <a href="/task/category/?category=Personal"
-          ><i class="fa-solid fa-child"></i><span>PERSONAL</span></a
-        >
-        <a href="/task/category/?category=Study"
-          ><i class="fa-solid fa-book"></i><span>STUDY</span></a
-        >
       </div>
-      <hr />
-      <br />
-      <div class="list-2"></div>
     </div>
   </div>
-  <!-- CONTENT-PART -->
-  <div class="content">
-    <!-- top-content -->
-    <div class="top-content">
-      <div class="start-part">
-        <h1>TODAY TASKS</h1>
-        <h2 class="head-2">Tuesday , January 26</h2>
-      </div>
-    </div>
-    <!-- middle-content -->
-    <div class="middle-content">
-      <% for( data of tasks) {%>
-      <div class="all-task">
-        <div class="all-task-1">
-          <div><input type="radio" /></div>
-          &nbsp; &nbsp;
-          <div class="task"><%= data.task.toUpperCase() %></div>
-        </div>
-        <div class="all-task-2">
-          <form action="/task/<%= data.id %>/edit?" method="get">
-            <button class="edit-btn"><i class="fas fa-edit"></i></button>
-          </form>
-          <form action="/task/<%= data.id %>?_method=DELETE" method="post">
-            <button class="delete-btn">
-              <i class="fa-solid fa-trash"></i>
-            </button>
-          </form>
-          <a class="task-detail" href="/task/<%= data.id %>/detail"
-            ><i class="fa-solid fa-arrow-up-right-from-square"></i
-          ></a>
-        </div>
-      </div>
-      <% } %>
-      <br />
-      <a
-        href="/task/new"
-        style="
-          text-decoration: none;
-          color: rgb(66, 48, 206);
-          font-size: 15px;
-          font-weight: 500;
-          margin-left: 10px;
-        "
-        >+ &nbsp;ADD TASK</a
-      >
-    </div>
-  </div>
-</div>
 
-<script>
-  let h2 = document.querySelector(".head-2");
+  <script>
+    // Update the header date dynamically
+    let h2 = document.querySelector(".head-2");
+    const today = new Date();
+    const options = {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    };
+    const formattedDate = today.toLocaleDateString("en-US", options);
+    h2.innerHTML = formattedDate;
 
-  const today = new Date();
-  const options = {
-    month: "long", // Use 'long' for full month name (e.g., "January")
-    day: "numeric",
-    year: "numeric",
-  };
-  const formattedDate = today.toLocaleDateString("en-US", options);
-  h2.innerHTML = `${formattedDate}`;
-</script>
+    // Function to mark a task as important
+    function markImportant(event, taskId) {
+      event.preventDefault();
+      // AJAX request to mark the task as important
+      fetch(`/task/${taskId}/important`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((response) => {
+          if (response.ok) {
+            // Hide the task from the current list
+            const taskElement = event.target.closest(".all-task");
+            if (taskElement) {
+              taskElement.style.display = "none";
+            }
+            // Redirect to the Important Tasks page
+            window.location.href = "/task/important";
+          } else {
+            alert("Failed to mark task as important");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("An error occurred while marking the task as important");
+        });
+    }
+  </script>
+</body>

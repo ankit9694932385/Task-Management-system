@@ -16,6 +16,7 @@ body {
 }
 
 .data-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,7 +78,7 @@ body {
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
   width: 80%;
   max-width: 350px;
-  height: auto;
+  height: 500px;
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   margin: 20px;
@@ -94,8 +95,7 @@ body {
 }
 
 .detail-section {
-  margin-bottom: 1rem;
-  padding: 0.5rem;
+  padding-top: 2.5rem;
   background: rgba(243, 244, 246, 0.5);
   border-radius: 12px;
   transition: transform 0.2s ease;
@@ -121,12 +121,12 @@ body {
 }
 
 .action-bar {
+  position: absolute;
+  left: 30%;
   display: flex;
-  justify-content: center;
-  align-items: center;
 
-  bottom: 0;
-  margin-top: 2rem;
+  align-items: center;
+  bottom: 2%;
 }
 
 .card-action {

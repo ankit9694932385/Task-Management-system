@@ -1,4 +1,4 @@
-<%- include("../includes/markup.ejs") %>
+<%- include("../includes/boilerplate.ejs") %>
 
 <body class="body-2">
   <div class="container">
@@ -6,7 +6,7 @@
     <form method="post" action="/task">
       <div class="form-row">
         <div class="input-data">
-          <input type="text" name="task" required />
+          <input type="text" name="task" minlength="2" required />
           <div class="underline"></div>
           <label for=""> TASK</label>
         </div>
@@ -26,8 +26,13 @@
 
       <div class="form-row">
         <div class="input-data textarea">
-          <textarea rows="4" cols="80" name="description" required min="5">
-          </textarea>
+          <textarea
+            rows="4"
+            cols="80"
+            name="description"
+            required
+            minlength="5"
+          ></textarea>
           <br />
           <div class="underline"></div>
           <label for="">Task Description</label>

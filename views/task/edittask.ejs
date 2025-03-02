@@ -1,4 +1,4 @@
-<%- include("../includes/markup.ejs") %>
+<%- include("../includes/boilerplate.ejs") %>
 
 <body class="body-2">
   <div class="container">
@@ -40,14 +40,15 @@
       <div class="form-row">
         <div class="input-data textarea">
           <textarea rows="3" cols="60" name="newTask[description]" required>
-<%= data.description.trim()
-      %></textarea
+<%= data.description.trim()%></textarea
           >
           <div class="underline"></div>
           <label for="">Task Description</label>
-          <br />
+          <br /><br />
           <div class="submit-btn-row">
-            <button class="submit-btn edit-task-btn">SUBMIT</button>
+            <button type="submit" class="submit-btn edit-task-btn">
+              SUBMIT
+            </button>
           </div>
         </div>
       </div>

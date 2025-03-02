@@ -1,4 +1,4 @@
-<%- include("../includes/markup.ejs") %>
+<%- include("../includes/boilerplate.ejs") %>
 
 <div class="home-container">
   <div class="navbar">
@@ -75,7 +75,7 @@
       const data = await response.json();
       console.log(data);
       p.innerHTML = data.quote || "You are Enough ";
-      author.innerHTML = `-${data.author}`;
+      author.innerHTML = `-${data.author || "Anonymous"}`;
     } catch (error) {
       console.error("Error fetching data:", error.message);
     }

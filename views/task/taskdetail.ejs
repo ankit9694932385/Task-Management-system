@@ -1,4 +1,4 @@
-<%- include("../includes/markup.ejs") %>
+<%- include("../includes/boilerplate.ejs") %>
 
 <body class="body-2">
   <div class="container">
@@ -6,18 +6,23 @@
     <form action="#">
       <div class="form-row">
         <div class="input-data">
-          <input type="text" name="task" value=" <%= data.task %>" required />
+          <input
+            style="text-transform: capitalize"
+            type="text"
+            name="task"
+            value=" <%= data.task %>"
+            required
+          />
           <div class="underline"></div>
           <label for="">Task</label>
         </div>
         <div class="input-data">
-          <select required name="newTask[category]">
-            <option value="<%= data.category %>"><%= data.category %></option>
-            <option value="Home">Home</option>
-            <option value="Office">Office</option>
-            <option value="Personal">Personal</option>
-            <option value="Study">Study</option>
-          </select>
+          <input
+            type="text"
+            name="task"
+            value=" <%= data.category %>"
+            required
+          />
           <div class="underline"></div>
           <label for="">CATEGORY</label>
         </div>

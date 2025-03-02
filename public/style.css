@@ -176,6 +176,8 @@ h2 {
 .middle-content {
   padding: 10px 20px;
   overflow: auto;
+  max-height: 530px;
+  height: 100%;
 }
 
 .all-task {
@@ -576,6 +578,7 @@ header {
   width: 50%;
   font-size: 1.9rem;
   font-family: cursive;
+  text-wrap: balance;
 }
 
 .author {
